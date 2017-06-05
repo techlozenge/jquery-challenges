@@ -18,6 +18,22 @@
   var saveButton = $('#save-button');
   var loadButton = $('#load-button');
 
+  // NOTE: Testing - Type in some text and then click the 'save' button. Refresh screen and click 'load' button.
+
+  // key for saving and retrieving saved localStorage data...
+  var key = "save-me-obi-wan";
+
+  saveButton.click(function() {
+    // using localStorage setitem() method, define a 'key' and the data to be saved...
+    localStorage.setItem(key, getText());
+  }) // end increment
+
+  loadButton.click(function() {
+    // using the saved text 'key' localStorage getItem() method obtains the saved data & loads it into text area...
+    loadText = localStorage.getItem(key);
+    setText(loadText);
+  }) // end increment
+
   /**
    * Gets the text from the element for you
    * @return {String}
@@ -33,4 +49,5 @@
   function setText(text) {
     return $('#save-me').val(text);
   }
+
 })();

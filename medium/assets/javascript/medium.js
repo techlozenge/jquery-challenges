@@ -42,8 +42,76 @@
   //code in here wont run until page loads
   $(function(){
 
+    // bonus - play a sound when the shoot button is pushed and a goal is scored
+    var audio = new Audio('applause6.mp3');
+
+    // prettify the page... WITH JQUERY!
+    $("#body").css("background-color","lightgray");
+    $("#body").css("font-size", "34");
+    $("#page-heading").html("Very Polite jQuery...");
+
+    $("#reset").css("font-size", "40px");
+    $("#reset").css("background-color", "black");
+    $("#reset").css("color", "white");
+    $(".reset").css("padding", "30px");
+
+    $("#one").html("Fishers Fabulous");
+    $("#teamone-shoot").css("font-size", "40px");
+    $("#teamone-shoot").css("background-color", "blue");
+    $("#teamone-shoot").css("color", "white");
+    $(".left").css("padding", "30px");
+    $(".left").css("border", "2px solid black");
+
+    $("#two").html("Syphilitic Cows");
+    $("#teamtwo-shoot").css("font-size", "40px");
+    $("#teamtwo-shoot").css("background-color", "red");
+    $("#teamtwo-shoot").css("color", "white");
+    $(".right").css("padding", "30px");
+    $(".right").css("border", "2px solid black");
 
 
-  })
+    $("#reset").click(function(){
+      let x = $("#num-resets").html();
+      x++;
+      $("#num-resets").html(x);
+      $("#teamone-numshots").html(0);
+      $("#teamone-numhits").html(0);
+      $("#teamtwo-numshots").html(0);
+      $("#teamtwo-numhits").html(0);
+      console.log("Reset counters");
+    })
+
+
+    $("#teamone-shoot").click(function(){
+      let x = $("#teamone-numshots").html();
+      x++;
+      $("#teamone-numshots").html(x);
+      let randomBool = Math.random() >= 0.5;
+      if (randomBool == 1) {
+          let x = $("#teamone-numhits").html();
+          x++;
+          $("#teamone-numhits").html(x);
+          audio.play();
+      }
+      console.log("team one: " + randomBool);
+    })
+
+
+    $("#teamtwo-shoot").click(function(){
+      let x = $("#teamtwo-numshots").html();
+      x++;
+      $("#teamtwo-numshots").html(x);
+      let randomBool = Math.random() >= 0.5;
+      if (randomBool == 1) {
+          let x = $("#teamtwo-numhits").html();
+          x++;
+          $("#teamtwo-numhits").html(x);
+          audio.play();
+      }
+      console.log("team two: " + randomBool);
+    })
+
+
+  }) // end waiting on page load
 
 })();
